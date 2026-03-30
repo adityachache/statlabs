@@ -353,13 +353,17 @@ function LayersTab() {
     const el = svgRef.current;
     if (!el) return;
 
-    const margin = { top: 12, right: 12, bottom: 36, left: 36 };
-    const totalW = Math.min(el.clientWidth || 360, 380);
+    const margin = { top: 12, right: 12, bottom: 56, left: 44 };
+    const totalW = el.clientWidth || 360;
     const w = totalW - margin.left - margin.right;
-    const h = w; // square
+    const h = w; // square plot area
+    const totalH = h + margin.top + margin.bottom;
 
     d3.select(el).selectAll('*').remove();
-    d3.select(el).attr('width', totalW).attr('height', totalW);
+    d3.select(el)
+      .attr('width',   totalW)
+      .attr('height',  totalH)
+      .attr('viewBox', `0 0 ${totalW} ${totalH}`);
 
     const svg = d3.select(el).append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
@@ -409,11 +413,11 @@ function LayersTab() {
         .attr('opacity', 0.9);
     });
 
-    // Axis labels
-    svg.append('text').attr('x', w / 2).attr('y', h + 30)
+    // Axis labels — positioned within the expanded bottom/left margin
+    svg.append('text').attr('x', w / 2).attr('y', h + 44)
       .attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', '#6b7280').text('x₁');
     svg.append('text').attr('transform', 'rotate(-90)')
-      .attr('x', -h / 2).attr('y', -27)
+      .attr('x', -h / 2).attr('y', -32)
       .attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', '#6b7280').text('x₂');
 
   }, [netType]);
@@ -434,7 +438,9 @@ function LayersTab() {
         ))}
       </div>
 
-      <svg ref={svgRef} className="w-full" />
+      <div className="pb-10">
+        <svg ref={svgRef} className="w-full" />
+      </div>
 
       {/* Legend */}
       <div className="flex gap-5 text-xs">
