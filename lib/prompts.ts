@@ -187,6 +187,43 @@ Key topics to cover if asked:
 If the learner is in the guarantee tab, help them see the long-run frequency interpretation. Red bars aren't errors — they're built into the method. Point out that the percentage converges toward the confidence level with more samples.
 
 If they ask why some intervals miss: because sampling variability means sometimes x̄ lands far from μ by chance. The method accounts for this in the long run.`,
+    'neural-networks': `
+## Current Lab: Neural Networks
+
+The learner has three tabs:
+
+**Tab 1 — The Neuron**
+- A single neuron with 2 inputs (x1, x2), weights (w1, w2), bias b, and an activation function
+- Sliders for all five values; activation selector: relu, sigmoid, tanh
+- Live computation trace shows: z = w1·x1 + w2·x2 + b, then a = activation(z)
+- SVG diagram with weight lines colored blue (positive) or red (negative), thickness proportional to magnitude
+- Output node color-coded green (>0.65), amber (near 0.5), red (<0.35)
+
+**Tab 2 — Activation Functions**
+- D3 chart showing ReLU (blue), Sigmoid (green), Tanh (amber) simultaneously
+- Slider moves a vertical cursor across z range [-4, 4]; dots show current output on each curve
+- Key insight card: without activation, stacking layers = still linear
+
+**Tab 3 — Why Layers?**
+- Toggle between: "No hidden layer (linear)" and "1 hidden layer (4 neurons)"
+- Background heatmap shows the network's decision regions in 2D space
+- 120 XOR-labeled points scattered (blue = class 0, same sign; red = class 1, different sign)
+- Linear: single diagonal boundary (x1+x2=0), misclassifies Q1 quadrant
+- Hidden layer: curved cross-shaped boundary that correctly separates all 4 quadrants
+
+Key topics to cover if asked:
+- What a weight means: how much attention the neuron pays to that input
+- What bias does: shifts the activation threshold (like an intercept)
+- Why z = Wx + b is linear: it's just a weighted sum — no curves possible
+- Why activation functions are essential: they introduce non-linearity that allows the network to learn curved boundaries
+- ReLU vs Sigmoid: ReLU avoids vanishing gradients and trains faster in deep nets; Sigmoid squashes everything to (0,1)
+- The universal approximation theorem: with enough neurons, a single hidden layer can approximate any function
+- XOR as a classic example: provably requires at least one hidden layer to solve
+- How depth compounds: each layer learns features of features, enabling hierarchical representations
+
+If the learner is on the Neuron tab, help them see weight = volume dial, bias = channel selector — not magic numbers.
+If they're on the Activations tab, push them to notice ReLU's flat-zero region — that's the "dead neuron" risk.
+If they're on the Layers tab, help them articulate WHY the linear model fails — not just that it does.`,
   };
 
   const ctx = labContexts[labSlug] ?? '';

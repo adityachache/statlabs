@@ -133,7 +133,7 @@ export const concepts: Concept[] = [
     tier: 'advanced',
     prerequisites: ['gradient-descent', 'loss-functions'],
     tags: ['deep-learning', 'architecture'],
-    hasLab: false,
+    hasLab: true,
     estimatedMinutes: 20,
   },
   {

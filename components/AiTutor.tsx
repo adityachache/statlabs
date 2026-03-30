@@ -19,6 +19,7 @@ const WELCOME_MESSAGES: Record<string, string> = {
   'mean-variance': 'I can see your dataset. Ask me why the mean chases outliers, when to use median instead, or what variance is actually measuring.',
   'hypothesis-testing': 'I can see your experiment. Ask me what a p-value really means, why p-hacking is a problem, or how to think about Type I vs Type II errors.',
   'confidence-intervals': 'I can see your confidence interval lab. Ask me what 95% confidence actually means, why the interval is random (not the true mean), or how CI width changes with sample size.',
+  'neural-networks': 'I can see your neural network sandbox. Ask me what weights actually do, why activation functions matter, or why a single layer can\'t solve XOR.',
 };
 const DEFAULT_WELCOME = 'I can see your current sandbox. Ask me anything about what you are exploring.';
 
@@ -42,6 +43,11 @@ const SUGGESTIONS: Record<string, string[]> = {
     'What does 95% confidence actually mean?',
     'Why is the interval random, not the true mean?',
     'How does sample size affect CI width?',
+  ],
+  'neural-networks': [
+    'What do weights actually do?',
+    'Why do we need activation functions?',
+    'Why can\'t a linear model solve XOR?',
   ],
 };
 

@@ -10,6 +10,7 @@ import CentralLimitTheorem, { type CLTLabState } from '@/components/labs/Central
 import MeanVariance, { type MeanVarianceLabState } from '@/components/labs/MeanVariance';
 import HypothesisTesting, { type HypothesisTestingLabState } from '@/components/labs/HypothesisTesting';
 import ConfidenceIntervals, { type ConfidenceIntervalLabState } from '@/components/labs/ConfidenceIntervals';
+import NeuralNetworks, { type NeuralNetworkLabState } from '@/components/labs/NeuralNetworks';
 
 export default function LabPage({ params }: { params: { slug: string } }) {
   const concept = concepts.find((c) => c.slug === params.slug);
@@ -23,6 +24,7 @@ export default function LabPage({ params }: { params: { slug: string } }) {
   const handleMVState        = (s: MeanVarianceLabState)  => setLabState(s as unknown as Record<string, unknown>);
   const handleHTState        = (s: HypothesisTestingLabState)        => setLabState(s as unknown as Record<string, unknown>);
   const handleCIState        = (s: ConfidenceIntervalLabState)        => setLabState(s as unknown as Record<string, unknown>);
+  const handleNNState        = (s: NeuralNetworkLabState)             => setLabState(s as unknown as Record<string, unknown>);
 
   let labContent: React.ReactNode;
   if (params.slug === 'normal-distribution') {
@@ -37,6 +39,8 @@ export default function LabPage({ params }: { params: { slug: string } }) {
     labContent = <HypothesisTesting onStateChange={handleHTState} />;
   } else if (params.slug === 'confidence-intervals') {
     labContent = <ConfidenceIntervals onStateChange={handleCIState} />;
+  } else if (params.slug === 'neural-networks') {
+    labContent = <NeuralNetworks onStateChange={handleNNState} />;
   } else {
     notFound();
   }
